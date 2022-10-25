@@ -22,14 +22,19 @@
     .blown-600{
         background:#0D0D0D;
     }
+    .blown-600-text{
+        color:#0D0D0D;
+    }
 }
 
 
 @layer base{
     html,body{
-        @apply blown-200 min-h-screen h-full
+        @apply blown-200 min-h-screen h-full blown-600-text 
     }
-    #__next{
-        @apply lg:pt-16
+    html{
+        font-family: 'Libre Baskerville', serif;
+        font-family: 'Noto Serif TC', serif;  
     }
+ 
 }
