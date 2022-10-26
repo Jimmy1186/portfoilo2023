@@ -1,5 +1,5 @@
 import React from "react";
-
+import {motion} from "framer-motion"
 
 export type navStateType = {
   navState: boolean;
@@ -8,11 +8,13 @@ export type navStateType = {
 
 function NavBtn({ navState, setNavState }: navStateType) {
   return (
-    <svg
-      className="w-10 h-10 absolute right-5 top-3 z-50 lg:hidden"
+    <motion.svg
+      className="w-10 h-10 right-5 top-3 z-50 fixed lg:hidden"
       viewBox="0 0 24 24"
       onClick={() => setNavState(!navState)}
-      
+      initial={{opacity:0,y:-50}}
+      animate={{opacity:1,y:0}}
+      transition={{duration:1}}
     >
       <path
         fill="currentColor"
@@ -22,7 +24,7 @@ function NavBtn({ navState, setNavState }: navStateType) {
             : "M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
         }`}
       />
-    </svg>
+    </motion.svg>
   );
 }
 

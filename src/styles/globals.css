@@ -7,17 +7,32 @@
     .blown-100{
         background:#FFEDCD;
     }
+    .blown-100-text{
+        color:#FFEDCD;
+    }
     .blown-200{
         background:#F2D194;
+    }
+    .blown-200-text{
+        color:#F2D194;
     }
     .blown-300{
         background:#F2BE5C;
     }
+    .blown-300-text{
+        color:#F2BE5C;
+    }
     .blown-400{
         background:#D9A566;
     }
+    .blown-400-text{
+        color:#D9A566;
+    }
     .blown-500{
         background:#733702;
+    }
+    .blown-500-text{
+        color:#733702;
     }
     .blown-600{
         background:#0D0D0D;
@@ -32,6 +47,7 @@
     html,body{
         @apply blown-200 min-h-screen h-full blown-600-text 
     }
+ 
     html{
         font-family: 'Libre Baskerville', serif;
         font-family: 'Noto Serif TC', serif;  

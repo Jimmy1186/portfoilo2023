@@ -51,6 +51,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  comments      Comment[]
 }
 
 model VerificationToken {
@@ -59,4 +60,12 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  message   String
+  create_at DateTime @default(now())
+  user_id   String
+  users     User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
