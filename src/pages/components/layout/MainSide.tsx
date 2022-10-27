@@ -31,7 +31,7 @@ const MainSide = ({ children }: Props) => {
         >
           <Aside />
           <AnimatePresence mode="wait">
-            <m.div className="" 
+            <m.div className="w-full" 
             key={router.pathname}
             initial={{opacity:0,x:-5}}
             animate={{ opacity: 1, x: 0 }}
@@ -44,26 +44,27 @@ const MainSide = ({ children }: Props) => {
         </main>
         <footer className="min-h-[10vh] ">
           <div className="flex flex-1 flex-col items-center justify-center gap-6 pt-14 lg:flex-row lg:justify-between">
-            <div className="z-0">
+            <m.div className="z-0"  whileHover={{scale:1.2}}>
               <Link href={"/"}>
                 <a>
                   <Image src={"/logo.png"} width={50} height={50} />
                 </a>
               </Link>
-            </div>
-            <ul className="flex gap-9 ">
+            </m.div>
+            <m.ul className="flex gap-9 ">
               {/* <li>工作經驗</li> */}
-              <li>
+              <m.li whileHover={{y:-4,scaleZ:1.2}}>
                 <Link href={"resume"}>
                   <a>履歷</a>
                 </Link>
-              </li>
-              <li>
+              </m.li>
+              {/* <m.li whileHover={{y:-4,scaleZ:1.2}}>
                 <Link href={"about_me"}>
                   <a>關於我</a>
                 </Link>
-              </li>
-            </ul>
+              </m.li> */}
+            </m.ul>
+            
             <div className="text-sm">
               © 2022 JIMMY HUNG. ALL RIGHTS RESERVED
             </div>

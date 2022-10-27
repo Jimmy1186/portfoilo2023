@@ -34,6 +34,7 @@ const TopSide: FC = () => {
             <m.div
               initial={{ x: -50 }}
               animate={{ x: 0 }}
+              whileHover={{scale:1.2}}
               className="flex justify-center py-8 px-5 align-middle"
             >
               <Image src={"/logo.png"} width={50} height={50} />
@@ -59,22 +60,7 @@ const TopSide: FC = () => {
 
           <h3 className="text-sm font-bold">jimmy10614d005@gmail.com</h3>
         </div>
-        <div className="order-3 flex items-center justify-center lg:order-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-            />
-          </svg>
-        </div>
+
 
         <m.ul
           className="order-2 flex flex-col gap-3 lg:order-3 lg:ml-auto lg:flex-row lg:pr-5"
@@ -82,26 +68,9 @@ const TopSide: FC = () => {
           // animate={navState?"open":"closed"}
           // variants={navAnimate}
         >
-          {/* <m.li className="flex gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-              />
-            </svg>
-            工作經驗
-          </m.li> */}
-          <m.li>
+          <m.li whileHover={{y:-4,scaleZ:1.2}} className="">
             <Link href={"/resume"}>
-              <a className="flex gap-3">
+              <a className="flex gap-3" >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -120,7 +89,7 @@ const TopSide: FC = () => {
               </a>
             </Link>
           </m.li>
-          <m.li>
+          {/* <m.li whileHover={{y:-4,scaleZ:1.2}}>
             <Link href="about_me">
               <a className="flex gap-3">
                 <svg
@@ -140,7 +109,7 @@ const TopSide: FC = () => {
                 關於我
               </a>
             </Link>
-          </m.li>
+          </m.li> */}
         </m.ul>
       </m.div>
 

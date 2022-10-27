@@ -1,16 +1,25 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 import Image from "next/image";
 import Skills from "./components/index/Skills";
-import { motion as m } from "framer-motion";
+import { motion as m, useScroll,useTransform } from "framer-motion";
 import Comments from "./components/index/Comments";
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
+import { Fragment, useEffect, useRef } from "react";
 
 const Home: NextPage = () => {
-  const { data: comments, refetch } = trpc.guest.getAll.useQuery();
+  const infiniteQuery = trpc.guest.getAll.useInfiniteQuery(
+    { limit: 2 },
+    {
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+    }
+  );
+  // const ref = useRef(null);
+  // const { scrollYProgress } = useScroll({target:ref});
+  //   const titleTrans = useTransform(scrollYProgress,[0.22,0],[0,200])
+
   return (
     <>
       <Head>
@@ -22,8 +31,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <m.div className="flex flex-col gap-24">
-        <section className="flex flex-col h-full gap-3 pt-20 lg:flex-row">
-          <div className="flex flex-col gap-3 lg:w-1/2">
+        <section 
+        className="flex  flex-col gap-3 h-full pt-20 lg:h-[50vh] lg:flex-row">
+        
+     
+          <m.div
+      
+           className="flex flex-col gap-10 lg:w-1/2">
             <m.h1
               className="text-4xl font-extrabold"
               initial={{ x: -50, opacity: 0 }}
@@ -33,28 +47,26 @@ const Home: NextPage = () => {
               Hung
             </m.h1>
             <m.span
+            className="lg:pr-10"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              venenatis tempor risus, vitae luctus ligula rutrum vitae. Cras
-              ullamcorper tempus sollicitudin. Nunc sed nibh eget turpis
-              consectetur blandit.{" "}
+              來自台北，大學打學校打工因緣際會的認識程式與前端，之後的工作又讓我了解後端，還希望能持續精進。{" "}
             </m.span>
-          </div>
+          </m.div>
           <m.div
-            className="relative h-64 w-full lg:w-1/2"
+            className="relative rounded-2xl overflow-hidden h-[30vh] w-full md:h-96 lg:w-1/2"
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Image src={"/cowboy.png"} layout="fill" objectFit="cover" />
+            <Image src={"/me2.jpg"} layout="fill" objectFit="cover" />
           </m.div>
         </section>
 
-        <section className="h-screen ">
-          <div className="sticky top-20 flex flex-col gap-5  ">
+        <section className="h-[220vh] lg:h-[180vh]">
+          <div className="sticky top-40 flex flex-col gap-5  ">
             <h2 className="text-3xl font-extrabold">我的專長</h2>
             <Skills />
           </div>
@@ -68,7 +80,7 @@ const Home: NextPage = () => {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <Image src={"/cowboy.png"} layout="fill" objectFit="cover" />
+              <Image src={"/me1.jpg"} layout="fill" objectFit="cover" />
             </m.div>
             <div className="flex flex-col gap-3">
               <m.h3
@@ -98,14 +110,10 @@ const Home: NextPage = () => {
                 exit={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas ac sodales dui. Suspendisse porta fringilla turpis.
-                Phasellus accumsan ex odio, tempor accumsan leo ultrices
-                venenatis. Proin porta tortor ut elit molestie, malesuada
-                posuere elit finibus. Nullam enim diam, dignissim et finibus ac,
-                commodo at sem. Praesent maximus, turpis sed gravida pretium,
-                ligula tortor vulputate libero, at auctor lacus ante ut dolor.
-                Proin posuere turpis purus,{" "}
+                接觸程式2年的時間，也累積了一定的知識量，能完成專案的要求。<br /><br />
+                學習方式主要以看youtube教學為主，大概有一定的了解後直接去做作品，有問題或不懂先去google查詢，如果找不到再去翻Documentation，不然直接去Github查相關的程式碼。<br /><br />
+                閒暇時間我通常會彈古典吉他、運動、<del>玩電腦</del>，朋友有空的話就去打生存遊戲、打牌。
+                {" "}
               </m.span>
             </div>
           </div>
@@ -116,16 +124,13 @@ const Home: NextPage = () => {
               <h2 className="text-3xl font-extrabold">作品集</h2>
               <h3 className="blown-500-text text-xs">工作或練習作品</h3>
             </div>
-            <Link href="https://github.com/Jimmy1186/Dashboard-t3">
-                <a>sd</a>
-                </Link>
             <div className="flex w-full flex-col gap-10 lg:flex-row lg:flex-wrap">
               <Link href="https://github.com/Jimmy1186/Dashboard-t3">
                 <m.div
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="blown-200 relative h-32 rounded-3xl shadow-2xl md:h-44 lg:h-72 lg:w-2/5"
+                  className="blown-200 relative h-32 rounded-3xl shadow-2xl cursor-pointer md:h-44 lg:h-72 lg:w-2/5"
                 >
                   <Image
                     src={"/dashboard.jpg"}
@@ -139,8 +144,9 @@ const Home: NextPage = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="blown-200 relative h-32 rounded-3xl shadow-2xl md:h-44 lg:h-72 lg:w-2/5"
+                  className="blown-200 relative h-32 rounded-3xl shadow-2xl cursor-pointer md:h-44 lg:h-72 lg:w-2/5"
                 >
+
                   <Image src={"/shirp.jpg"} layout="fill" objectFit="cover" />
                 </m.div>
               </Link>
@@ -149,7 +155,7 @@ const Home: NextPage = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="blown-200 relative h-32 rounded-3xl shadow-2xl md:h-44 lg:h-72 lg:w-2/5"
+                  className="blown-200 relative h-32 rounded-3xl shadow-2xl cursor-pointer md:h-44 lg:h-72 lg:w-2/5"
                 >
                   <Image
                     src={"/oldPortfolio.jpg"}
@@ -169,35 +175,45 @@ const Home: NextPage = () => {
             </div>
             <div className="">
               <ul className="flex flex-col gap-5">
-                {comments
-                  ? comments.flatMap((v, i) => {
-                      return (
-                        <li key={i}>
-                          <div className="flex items-center gap-3">
-                            <div className="relative h-8 w-8 overflow-hidden rounded-full">
-                              <Image
-                                src={v.users.image as string}
-                                layout="fill"
-                                objectFit="cover"
-                                alt="user photo"
-                              />
+                {infiniteQuery.data?.pages.map((group, i) => {
+                  return (
+                    <Fragment key={i}>
+                      {group.items.map((v, i) => {
+                        return (
+                          <li key={i}>
+                            <div className="flex items-center gap-3">
+                              <div className="relative h-8 w-8 overflow-hidden rounded-full">
+                                <Image
+                                  src={v.users.image as string}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  alt="user photo"
+                                />
+                              </div>
+                              <span>{v.users.name}</span>
+                              <span>
+                                {format(new Date(v.create_at), "yyyy/MM/dd")}
+                              </span>
                             </div>
-                            <span>{v.users.name}</span>
-                            <span>
-                              {format(new Date(v.create_at), "yyyy/MM/dd")}
-                            </span>
-                          </div>
 
-                          <span className="pl-11">{v.message}</span>
-                        </li>
-                      );
-                    })
-                  : []}
+                            <span className="pl-11">{v.message}</span>
+                          </li>
+                        );
+                      })}
+                    </Fragment>
+                  );
+                })}
+                {infiniteQuery.isFetchingNextPage? (<li>Loading...</li>):("")}
               </ul>
+
             </div>
-            <div className="">
-              <Comments refetch={refetch} />
+            {infiniteQuery.hasNextPage?(
+              <div className="" onClick={() => infiniteQuery.fetchNextPage()}>
+              <button type="button" title="more comments">更多留言 ...</button>
             </div>
+            ):(<span>沒有更多留言啦🗿🗿</span>)}
+            
+            <div className=""> <Comments refetch={infiniteQuery.refetch} /> </div>
           </div>
         </section>
       </m.div>
