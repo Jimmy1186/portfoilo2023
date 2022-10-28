@@ -4,17 +4,17 @@ import NavBtn from "./NavBtn";
 import Link from "next/link";
 import { motion as m, Variants } from "framer-motion";
 
-const navAnimate: Variants = {
-  open: {
-    left: 0,
-    display: "block",
-    opacity: 1,
-  },
-  closed: {
-    left: -72,
-    opacity: 0,
-  },
-};
+// const navAnimate: Variants = {
+//   open: {
+//     left: 0,
+//     display: "block",
+//     opacity: 1,
+//   },
+//   closed: {
+//     left: -72,
+//     opacity: 0,
+//   },
+// };
 
 const TopSide: FC = () => {
   const [navState, setNavState] = useState<boolean>(false);
@@ -22,7 +22,7 @@ const TopSide: FC = () => {
   return (
     <nav
       className={`   blown-100 
-    h-20 lg:mt-16 lg:flex`}
+    h-20 lg:flex`}
     >
       <m.div
         className={`fixed z-20 flex h-screen w-[70vw] flex-col items-center gap-6 transition-all ${
@@ -42,7 +42,7 @@ const TopSide: FC = () => {
           </a>
         </Link>
 
-        <div className="align-center hidden gap-2 pl-5  lg:flex">
+        <div className="align-center hidden gap-2 pl-5 tooltip  lg:flex"  data-tip="考慮寄個email給我?">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

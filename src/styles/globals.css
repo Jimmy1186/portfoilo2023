@@ -45,9 +45,9 @@
 
 @layer base{
     html,body{
-        @apply blown-200 min-h-screen h-full blown-600-text 
+        @apply blown-200 blown-600-text 
     }
- 
+  
     html{
         font-family: 'Libre Baskerville', serif;
         font-family: 'Noto Serif TC', serif;  

@@ -26,47 +26,47 @@ const Resume: NextPage = () => {
         <div className="blown-200 flex w-full flex-col gap-5 py-8 px-12">
           <h3>這些是我用於前端的</h3>
           <m.ul className="flex gap-8 flex-wrap" variants={listVariant} initial={"hidden"} animate={"show"}>
-            <m.li variants={listItem}>
+            <m.li variants={listItem} className="tooltip" data-tip="HTML">
               <Image src={"/html.png"} height={50} width={50} />
             </m.li>
-            <m.li variants={listItem}>
+            <m.li variants={listItem} className="tooltip" data-tip="CSS">
               <Image src={"/css.png"} height={50} width={50} />
             </m.li>
-            <m.li variants={listItem}>
+            <m.li variants={listItem} className="tooltip" data-tip="JS">
               <Image src={"/js.png"} height={50} width={50} />
             </m.li>
 
-            <m.li variants={listItem}>
+            <m.li variants={listItem} className="tooltip" data-tip="TailwindCSS">
               <Image src={"/tailwind.png"} height={50} width={80} />
             </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/ts.png"} height={50} width={70} />
+            <m.li variants={listItem} className="tooltip" data-tip="TS">
+              <Image src={"/ts.png"} height={50} width={70}/>
             </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/react.png"} height={50} width={50} />
+            <m.li variants={listItem} className="tooltip" data-tip="ReactJS">
+              <Image src={"/react.png"} height={50} width={50}/>
             </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/next.png"} height={50} width={80} />
+            <m.li variants={listItem} className="tooltip" data-tip="NextJS">
+              <Image src={"/next.png"} height={50} width={80}/>
             </m.li>
           </m.ul>
         </div>
         <div className="blown-200 flex w-full flex-col gap-5 py-8 px-12">
           <h3>這些是我用於後端的</h3>
           <m.ul className="flex gap-8  flex-wrap" variants={listVariant} initial={"hidden"} animate={"show"}>
-            <m.li variants={listItem}>
-              <Image src={"/react-query.png"} height={50} width={50} />
+            <m.li variants={listItem} className="tooltip" data-tip="React-Query">
+              <Image src={"/react-query.png"} height={50} width={50}/>
                </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/prisma.png"} height={50} width={50} />
+            <m.li variants={listItem} className="tooltip" data-tip="Prisms">
+              <Image src={"/prisma.png"} height={50} width={50}/>
                </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/mongo.png"} height={50} width={120} />
+            <m.li variants={listItem} className="tooltip" data-tip="MongoDB">
+              <Image src={"/mongo.png"} height={50} width={120}/>
                </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/mysql.png"} height={50} width={70} />
+            <m.li variants={listItem} className="tooltip" data-tip="MySQL">
+              <Image src={"/mysql.png"} height={50} width={70}/>
                </m.li>
-            <m.li variants={listItem}>
-              <Image src={"/trpc-io.png"} height={50} width={50} />
+            <m.li variants={listItem} className="tooltip" data-tip="tRPC">
+              <Image src={"/trpc-io.png"} height={50} width={50}/>
                </m.li>
             </m.ul>
         </div>

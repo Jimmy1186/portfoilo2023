@@ -4,7 +4,7 @@ import Link from "next/link";
 import { trpc } from "../utils/trpc";
 import Image from "next/image";
 import Skills from "./components/index/Skills";
-import { motion as m, useScroll,useTransform } from "framer-motion";
+import { motion as m, useScroll, useTransform } from "framer-motion";
 import Comments from "./components/index/Comments";
 import { format } from "date-fns";
 import { Fragment, useEffect, useRef } from "react";
@@ -31,13 +31,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <m.div className="flex flex-col gap-24">
-        <section 
-        className="flex  flex-col gap-3 h-full pt-20 lg:h-[50vh] lg:flex-row">
-        
-     
-          <m.div
-      
-           className="flex flex-col gap-10 lg:w-1/2">
+        <section className="flex  h-full flex-col gap-3 pt-20 lg:h-[50vh] lg:flex-row">
+          <m.div className="flex flex-col gap-10 lg:w-1/2">
             <m.h1
               className="text-4xl font-extrabold"
               initial={{ x: -50, opacity: 0 }}
@@ -47,7 +42,7 @@ const Home: NextPage = () => {
               Hung
             </m.h1>
             <m.span
-            className="lg:pr-10"
+              className="lg:pr-10"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -55,14 +50,19 @@ const Home: NextPage = () => {
               來自台北，大學打學校打工因緣際會的認識程式與前端，之後的工作又讓我了解後端，還希望能持續精進。{" "}
             </m.span>
           </m.div>
-          <m.div
-            className="relative rounded-2xl overflow-hidden h-[30vh] w-full md:h-96 lg:w-1/2"
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
+          <div
+            className="tooltip h-[30vh]  w-full md:h-96 lg:w-1/2"
+            data-tip="AK GUY"
           >
-            <Image src={"/me2.jpg"} layout="fill" objectFit="cover" />
-          </m.div>
+            <m.div
+              className="relative h-full w-full overflow-hidden rounded-2xl  "
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <Image src={"/me2.jpg"} layout="fill" objectFit="cover" />
+            </m.div>
+          </div>
         </section>
 
         <section className="h-[220vh] lg:h-[180vh]">
@@ -74,11 +74,12 @@ const Home: NextPage = () => {
         <section className="flex justify-center">
           <div className="blown-200 flex  w-full flex-col gap-10 rounded-lg p-5 shadow-2xl lg:w-1/2 ">
             <m.div
-              className="relative h-64 w-full rounded-2xl lg:w-1/2"
+              className="tooltip relative h-64 w-full rounded-2xl lg:w-1/2"
               initial={{ x: -50, opacity: 0 }}
               exit={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
+              data-tip="Bruh"
             >
               <Image src={"/me1.jpg"} layout="fill" objectFit="cover" />
             </m.div>
@@ -110,10 +111,14 @@ const Home: NextPage = () => {
                 exit={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
               >
-                接觸程式2年的時間，也累積了一定的知識量，能完成專案的要求。<br /><br />
-                學習方式主要以看youtube教學為主，大概有一定的了解後直接去做作品，有問題或不懂先去google查詢，如果找不到再去翻Documentation，不然直接去Github查相關的程式碼。<br /><br />
-                閒暇時間我通常會彈古典吉他、運動、<del>玩電腦</del>，朋友有空的話就去打生存遊戲、打牌。
-                {" "}
+                接觸程式2年的時間，也累積了一定的知識量，能完成專案的要求。
+                <br />
+                <br />
+                學習方式主要以看youtube教學為主，大概有一定的了解後直接去做作品，有問題或不懂先去google查詢，如果找不到再去翻Documentation，不然直接去Github查相關的程式碼。
+                <br />
+                <br />
+                閒暇時間我通常會彈古典吉他、運動、<del>玩電腦</del>
+                ，朋友有空的話就去打生存遊戲、打牌。{" "}
               </m.span>
             </div>
           </div>
@@ -130,7 +135,8 @@ const Home: NextPage = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="blown-200 relative h-32 rounded-3xl shadow-2xl cursor-pointer md:h-44 lg:h-72 lg:w-2/5"
+                  className="blown-200 tooltip relative h-32 cursor-pointer rounded-3xl shadow-2xl md:h-44 lg:h-72 lg:w-2/5"
+                  data-tip="公司後端Dashboard"
                 >
                   <Image
                     src={"/dashboard.jpg"}
@@ -144,9 +150,9 @@ const Home: NextPage = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="blown-200 relative h-32 rounded-3xl shadow-2xl cursor-pointer md:h-44 lg:h-72 lg:w-2/5"
+                  className="blown-200 tooltip relative h-32 cursor-pointer rounded-3xl shadow-2xl md:h-44 lg:h-72 lg:w-2/5"
+                  data-tip="魚池參數"
                 >
-
                   <Image src={"/shirp.jpg"} layout="fill" objectFit="cover" />
                 </m.div>
               </Link>
@@ -155,7 +161,8 @@ const Home: NextPage = () => {
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="blown-200 relative h-32 rounded-3xl shadow-2xl cursor-pointer md:h-44 lg:h-72 lg:w-2/5"
+                  className="blown-200 tooltip relative h-32 cursor-pointer rounded-3xl shadow-2xl md:h-44 lg:h-72 lg:w-2/5"
+                  data-tip="舊的作品集"
                 >
                   <Image
                     src={"/oldPortfolio.jpg"}
@@ -203,17 +210,23 @@ const Home: NextPage = () => {
                     </Fragment>
                   );
                 })}
-                {infiniteQuery.isFetchingNextPage? (<li>Loading...</li>):("")}
+                {infiniteQuery.isFetchingNextPage ? <li>Loading...</li> : ""}
               </ul>
-
             </div>
-            {infiniteQuery.hasNextPage?(
+            {infiniteQuery.hasNextPage ? (
               <div className="" onClick={() => infiniteQuery.fetchNextPage()}>
-              <button type="button" title="more comments">更多留言 ...</button>
+                <button type="button" title="more comments">
+                  更多留言 ...
+                </button>
+              </div>
+            ) : (
+              <span>沒有更多留言啦🗿🗿</span>
+            )}
+
+            <div className="">
+              {" "}
+              <Comments refetch={infiniteQuery.refetch} />{" "}
             </div>
-            ):(<span>沒有更多留言啦🗿🗿</span>)}
-            
-            <div className=""> <Comments refetch={infiniteQuery.refetch} /> </div>
           </div>
         </section>
       </m.div>
