@@ -23,7 +23,7 @@ const Skills: FC = () => {
 
 
   // const png1 = useTransform(scrollY, [, ], [0, 1.2]);
-  const png1 = useTransform(scrollY, [400, 800], [100, 0]);
+  const png1 = useTransform(scrollY, [400, 800], [50, 0]);
   const png1_Opa = useTransform(scrollY, [400, 800], [0, 1]);
 
   const png2 = useTransform(scrollY, [600, 1000], [-100, 0]);
