@@ -27,7 +27,6 @@ const Comments= ({refetch}:commentType) => {
   });
 
   const submitHandler = (values: insertType, action: any) => {
-    console.log(values);
     insertMessageMutation.mutate({
       message:values.message
     })
@@ -57,14 +56,14 @@ const Comments= ({refetch}:commentType) => {
               {session == null ? (
                 <div
                   onClick={() => signIn("google")}
-                  className="blown-200 flex  w-2/5 cursor-pointer items-center justify-center rounded border-2"
+                  className="blown-200 flex  w-2/5 cursor-pointer items-center justify-center rounded border-2 select-none"
                 >
                   留言? 先登入Google喔
                 </div>
               ) : (
                 <button
                   type="submit"
-                  className="blown-200 w-2/5  rounded border-2"
+                  className="blown-200 w-2/5  rounded border-2 select-none"
                 >
                   送出
                 </button>

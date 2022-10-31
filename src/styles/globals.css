@@ -45,7 +45,7 @@
 
 @layer base{
     html,body{
-        @apply blown-200 blown-600-text 
+        @apply blown-200 blown-600-text selection:blown-600 selection:blown-100-text
     }
   
     html{

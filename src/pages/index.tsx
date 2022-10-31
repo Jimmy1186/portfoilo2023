@@ -210,12 +210,13 @@ const Home: NextPage = () => {
                     </Fragment>
                   );
                 })}
-                {infiniteQuery.isFetchingNextPage ? <li>Loading...</li> : ""}
+                {infiniteQuery.isLoading ? <progress className="progress w-56"></progress>:''}
+                {infiniteQuery.isFetchingNextPage ? <progress className="progress w-56"></progress> : ""}
               </ul>
             </div>
             {infiniteQuery.hasNextPage ? (
               <div className="" onClick={() => infiniteQuery.fetchNextPage()}>
-                <button type="button" title="more comments">
+                <button type="button" title="more comments select-none">
                   更多留言 ...
                 </button>
               </div>
