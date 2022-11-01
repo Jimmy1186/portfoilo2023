@@ -2,6 +2,10 @@ import { NextPage } from "next";
 import React from "react";
 import Image from "next/image";
 import { motion as m,Variants } from "framer-motion";
+import { useLoader } from '@react-three/fiber'
+import Test from "./components/3dItems/AK";
+
+
 
 const listVariant:Variants = {
     hidden: { opacity: 0 },
@@ -70,6 +74,9 @@ const Resume: NextPage = () => {
                </m.li>
             </m.ul>
         </div>
+
+     
+       
         <h2 className="text-3xl font-extrabold">工作經驗</h2>
 
         <div className="flex flex-col gap-5">

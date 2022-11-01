@@ -8,6 +8,7 @@ import { motion as m, useScroll, useTransform } from "framer-motion";
 import Comments from "./components/index/Comments";
 import { format } from "date-fns";
 import { Fragment, useEffect, useRef } from "react";
+import Test from "./components/3dItems/AK";
 
 const Home: NextPage = () => {
   const infiniteQuery = trpc.guest.getAll.useInfiniteQuery(
@@ -49,6 +50,9 @@ const Home: NextPage = () => {
             >
               來自台北，大學打學校打工因緣際會的認識程式與前端，之後的工作又讓我了解後端，還希望能持續精進。{" "}
             </m.span>
+            <div className="">
+            <Test />
+            </div>
           </m.div>
           <div
             className="tooltip h-[30vh]  w-full md:h-96 lg:w-1/2"
@@ -210,8 +214,8 @@ const Home: NextPage = () => {
                     </Fragment>
                   );
                 })}
-                {infiniteQuery.isLoading ? <progress className="progress w-56"></progress>:''}
-                {infiniteQuery.isFetchingNextPage ? <progress className="progress w-56"></progress> : ""}
+                {infiniteQuery.isLoading ? <li><progress className="progress w-56"></progress></li>:''}
+                {infiniteQuery.isFetchingNextPage ? <li><progress className="progress w-56"></progress></li> : ""}
               </ul>
             </div>
             {infiniteQuery.hasNextPage ? (
